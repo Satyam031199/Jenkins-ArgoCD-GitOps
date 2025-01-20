@@ -5,7 +5,7 @@ pipeline {
     }
     environment {
         DOCKER_HUB_REPO = 'satyamchaturvedi/jenkins-argo-cd-gitops'
-        DOCKER_HUB_CREDENTIALS_ID = 'dockerhub'
+        DOCKER_HUB_CREDENTIALS_ID = 'jenkins-argo-cd-git-ops-dockerhub'
     }
     stages {
         stage('Checkout Github') {
