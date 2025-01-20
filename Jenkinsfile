@@ -10,6 +10,7 @@ pipeline {
     stages {
         stage('Checkout Github') {
             steps {
+		sh 'echo Checking out code from GitHub'
                 git branch: 'main', credentialsId: 'GitOps-token-Github', url: 'https://github.com/Satyam031199/Jenkins-ArgoCD-GitOps.git'
             }
         }
