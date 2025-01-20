@@ -28,7 +28,7 @@ pipeline {
         stage('Trivy Scan') {
             steps {
                 script{
-                    sh 'trivy --severity HIGH,CRITICAL --skip-update --no-progress image --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
+                    sh 'trivy --severity HIGH,CRITICAL --no-progress image --format table -o trivy-scan-report.txt satyamchaturvedi/jenkins-argo-cd-gitops:latest'
                 }
             }
         }
