@@ -41,13 +41,6 @@ pipeline {
                 '''
             }
         }
-        stage('Apply Kubernetes Manifests & Sync App with ArgoCD') {
-            steps {
-                sh '''
-                echo Applying Kubernetes Manifests & Sync App with ArgoCD
-                '''
-            }
-        }
     }
 
     post {
