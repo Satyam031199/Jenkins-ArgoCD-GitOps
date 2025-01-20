@@ -8,42 +8,42 @@ pipeline {
                 }
                 stage('Install node dependencies'){
                         steps {
-                                sh ''''
+                                sh '''
                                 echo Installing node dependencies
                                 '''
                         }
                 }
                 stage('Build Docker Image'){
                         steps {
-                                sh ''''
+                                sh '''
                                 echo Building Docker Image
                                 '''
                         }
                 }
                 stage('Trivy Scan'){
                         steps {
-                                sh ''''
+                                sh '''
                                 echo Scanning Docker image with Trivy
                                 '''
                         }
                 }
                 stage('Push Image to DockerHub'){
                         steps {
-                                sh ''''
+                                sh '''
                                 echo Pushing image to DockerHub
                                 '''                                     }
                         }
                 }
                 stage('Install Kubectl & ArgoCD CLI'){
                         steps {
-                                sh ''''
+                                sh '''
                                 echo Installing Argo-CLI
                                 '''
                         }
                 }
                 stage('Apply Kubernetes Manifests & Sync App with ArgoCD'){
                         steps {
-                                sh ''''
+                                sh '''
                                 echo Applying Kubernetes Manifests & Sync App wit ArgoCD
                                 '''
                         }
