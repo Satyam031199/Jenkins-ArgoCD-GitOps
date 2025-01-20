@@ -3,6 +3,9 @@ pipeline {
     tools{
         nodejs 'NodeJS'
     }
+    environment {
+        DOCKER_HUB_REPO = 'satyamchaturvedi/Jenkins-ArgoCD-GitOps'
+    }
     stages {
         stage('Checkout Github') {
             steps {
@@ -16,9 +19,10 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh '''
-                echo Building Docker Image
-                '''
+                script{
+                    echo 'Building Docker Image'
+                    docker.build('${DOCKER_HUB_REPO}:latest')
+                }
             }
         }
         stage('Trivy Scan') {
