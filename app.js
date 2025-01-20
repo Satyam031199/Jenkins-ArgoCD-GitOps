@@ -3,7 +3,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get('/hello', (req, res) => {
-  res.send('Hello, World! Welcome to iQuant YouTube Channel.\n');
+  console.log('/hello is working');
+  res.send('Hello, This is a Jenkins-ArgoCD-GitOps project');
 });
 
 app.listen(port, () => {
