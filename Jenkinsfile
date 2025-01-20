@@ -5,6 +5,7 @@ pipeline {
     }
     environment {
         DOCKER_HUB_REPO = 'satyamchaturvedi/jenkins-argo-cd-gitops'
+        DOCKER_HUB_CREDENTIALS_ID = 'dockerhub'
     }
     stages {
         stage('Checkout Github') {
@@ -21,13 +22,13 @@ pipeline {
             steps {
                 script{
                     echo 'Building Docker Image'
-                    docker.build("${DOCKER_HUB_REPO}:latest")
+                    dockerImage = docker.build("${DOCKER_HUB_REPO}:latest")
                 }
             }
         }
         stage('Trivy Scan') {
             steps {
-                script{
+                script {
                     sh 'trivy image --security-checks vuln --severity HIGH,CRITICAL --skip-update --no-progress --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
                     sh 'cat trivy-scan-report.txt'
                 }
@@ -35,9 +36,12 @@ pipeline {
         }
         stage('Push Image to DockerHub') {
             steps {
-                sh '''
-                echo Pushing image to DockerHub
-                '''
+                script {
+                    echo 'Pushing Image to DockerHub'
+                    docker.withRegistry('https://registry.hub.docker.com',"${DOCKER_HUB_CREDENTIALS_ID}") {
+                         dockerImage.push('latest')
+                    }
+                }
             }
         }
         stage('Install Kubectl & ArgoCD CLI') {
