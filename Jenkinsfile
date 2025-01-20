@@ -28,7 +28,7 @@ pipeline {
         stage('Trivy Scan') {
             steps {
                 script{
-                    sh 'trivy image --security-checks vuln --severity HIGH,CRITICAL --no-progress --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
+                    sh 'trivy image --security-checks vuln --severity HIGH,CRITICAL --skip-update --no-progress --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
                     sh 'cat trivy-scan-report.txt'
                 }
             }
