@@ -4,7 +4,7 @@ pipeline {
         nodejs 'NodeJS'
     }
     environment {
-        DOCKER_HUB_REPO = 'satyamchaturvedi/Jenkins-ArgoCD-GitOps'
+        DOCKER_HUB_REPO = 'satyamchaturvedi/jenkins-argo-cd-gitops'
     }
     stages {
         stage('Checkout Github') {
