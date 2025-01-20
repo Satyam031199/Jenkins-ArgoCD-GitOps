@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: node-app
-        image: iquantc/iquant-app:latest
+        image: satyamchaturvedi/jenkins-argo-cd-gitops
         ports:
         - containerPort: 3000
 
